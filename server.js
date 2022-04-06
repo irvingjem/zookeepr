@@ -1,11 +1,16 @@
 const fs = require('fs');
 const path = require('path');
-
 const express = require('express');
 const { animals } = require('./data/animals');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+// parse incoming string or array data
+app.use(express.urlencoded({ extended: true }));
+// parse incoming JSON data
+app.use(express.json());
+
 
 function filterByQuery(query, animalsArray) {
     let personalityTraitsArray = [];
@@ -93,10 +98,9 @@ app.get('/api/animals/:id', (req, res) => {
     }
 });
 
-// parse incoming string or array data
-app.use(express.urlencoded({ extended: true }));
-// parse incoming JSON data
-app.use(express.json());
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
 
 app.post('/api/animals', (req, res) => {
     // set id based on what the next index of the array will be
