@@ -288,6 +288,15 @@
         "hungry"
       ],
       "id": "30"
+    },
+    {
+      "name": "Greg",
+      "species": "Monkey",
+      "diet": "herbivore",
+      "personalityTraits": [
+        "goofy"
+      ],
+      "id": "31"
     }
   ]
 }
